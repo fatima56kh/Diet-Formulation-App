@@ -1,0 +1,143 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+
+import 'package:intl/intl.dart';
+import 'package:lacta_diet/screen/categorydata/foodsavailable.dart';
+import 'package:lacta_diet/screen/categorydata/statsdata.dart';
+import 'package:lacta_diet/screen/consent/colors.dart';
+import 'package:lacta_diet/screen/screens/sidebar.dart';
+
+class Category extends StatefulWidget {
+  const Category({super.key});
+
+  @override
+  State<Category> createState() => _CategoryState();
+}
+
+class _CategoryState extends State<Category> {
+  List<String> docIDs = [];
+  Future getDocId() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .where("email", isEqualTo: FirebaseAuth.instance.currentUser!.email)
+        .get()
+        .then(
+          (snapshot) => snapshot.docs.forEach(
+            (document) {
+              print(document.reference);
+              docIDs.add(document.reference.id);
+            },
+          ),
+        );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var now = DateTime.now();
+    var formatter = new DateFormat('dd-MM-yyyy');
+    String formattedDate = formatter.format(now);
+    return Scaffold(
+      backgroundColor: background,
+      drawer: Navbar(),
+      appBar: AppBar(
+        title: Center(child: Text("Eat Healthy")),
+        backgroundColor: maincolor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+      ),
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: ListView(
+            physics: BouncingScrollPhysics(),
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Column(
+                children: [
+                  Text(
+                    'Today,',
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 7),
+                  Text(
+                    formattedDate,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              SizedBox(
+                height: 720,
+                child: FutureBuilder(
+                  future: getDocId(),
+                  builder: (context, snapshot) {
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: docIDs.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.all(5),
+                          child: ListTile(
+                            tileColor: background,
+                            title: statsdata(
+                              documentId: docIDs[index],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20, left: 5),
+                child: Container(
+                  height: 230,
+                  child: FutureBuilder(
+                    future: getDocId(),
+                    builder: (context, snapshot) {
+                      return ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: docIDs.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(15.5),
+                            child: ListTile(
+                              tileColor: background,
+                              title: Getfood(
+                                documentId: docIDs[index],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

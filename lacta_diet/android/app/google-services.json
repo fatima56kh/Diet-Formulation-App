@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "1086740096440",
+    "firebase_url": "https://lactadiet-default-rtdb.firebaseio.com",
+    "project_id": "lactadiet",
+    "storage_bucket": "lactadiet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086740096440:android:3c7c02b48db9d669919b4d",
+        "android_client_info": {
+          "package_name": "com.example.lacta_diet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz98Wx51pFIQ5Ig7AEAUoVjzF82gFWlHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086740096440:android:afa364ac487671ba919b4d",
+        "android_client_info": {
+          "package_name": "com.example.untitled5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz98Wx51pFIQ5Ig7AEAUoVjzF82gFWlHA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
