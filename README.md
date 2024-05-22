@@ -1,7 +1,7 @@
 # Diet-Formulation-App
 LactaDiet App has the potential to support the well-being of lactating mothers and infants, contributing to improved health outcomes and overall nutritional awareness.
 
-![certificate](https://github.com/fatima56kh/Diet-Formulation-App/assets/113290205/f6ad66b5-6d86-45e7-ac69-6376b60e90d4)
+
 <img width="395" alt="ss1" src="https://github.com/fatima56kh/Diet-Formulation-App/assets/113290205/b74a434b-d4ae-4c12-a31e-005b8b585684">
 <img width="412" alt="ss2" src="https://github.com/fatima56kh/Diet-Formulation-App/assets/113290205/8298411f-5716-4dab-b343-f4c0550c19b6">
 <img width="506" alt="s33" src="https://github.com/fatima56kh/Diet-Formulation-App/assets/113290205/bc08726f-b89d-4c4a-875d-45abbc25cd53">
